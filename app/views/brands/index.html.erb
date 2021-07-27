@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @brands.each do |item| %>
+      <div class="col">
+        <div class="card" style="width: 24rem">
+          <img style="height: 200px" src="<%= item.image_url %>" class="card-img-top" alt="<%= item.title %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %></h5>
+            <p class="card-text"><%= item.description %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <p><%= item.rating %> / 5</p>
+              <button class="btn btn-primary">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
