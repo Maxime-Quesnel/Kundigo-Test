@@ -1,0 +1,31 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <img src="https://gebs.fr/modules/professionnel/upload/28184717-20190704104914-0-2016_05_29-blue-logo.png" alt="logo-app" width="100" height="42"/>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 link-secondary">Shops</a></li>
+        <% if user_signed_in? %>
+          <li><a href="#" class="nav-link px-2 link-secondary">Cart</a></li>
+        <% end %>
+      </ul>
+      <% if user_signed_in? %>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </ul>
+        </div>
+      <% else %>
+        <div class="text-end">
+          <a href="<%= new_user_session_path %>" class="btn btn-outline-primary">Login</a>
+          <a href="<%= new_user_registration_path %>" class="btn btn-primary">Sign-up</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
