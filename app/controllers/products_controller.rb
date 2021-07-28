@@ -13,8 +13,18 @@ class ProductsController < ApplicationController
     end
   end
 
-  def add_to_cart
+  def edit
+    @product = Product.find(params[:id])
+  end
 
+  def update
+    @product = Product.find(params[:id])
+    @price_default = @product.price
+
+    post_params = params.require(:product).permit(:title, :image_url, :price, :brand_id, :quantity)
+    @product.update(old_price: @price_default)
+    @product.update(post_params)
+    redirect_to root_path
 
   end
 

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :carts
   resources :cart_products
   resources :buy
+  devise_for :users
 
 =begin
-  get 'command/:id/cancel' => 'Cancel#confirm'
+  get 'confirmations/:id/cancel' => 'Confirmations#cancel'
 =end
 
-  devise_for :users
 end
