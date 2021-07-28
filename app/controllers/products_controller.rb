@@ -13,7 +13,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def update
+  def add_to_cart
+
+
   end
 
   private
