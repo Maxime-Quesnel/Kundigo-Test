@@ -20,7 +20,7 @@
             <h5 class="card-title"><%= item.title %></h5>
             <p class="card-text">15€</p>
             <p class="card-text"><small class="text-muted">remaining stock: <%= item.quantity %></small></p>
-            <%= link_to "Add to cart", root_path, class: "btn btn-outline-primary" %>
+            <%= link_to "Add to cart", cart_products_path(id_product: item.id), method: "create", class: "btn btn-outline-primary" %>
           </div>
         </div>
       </div>
