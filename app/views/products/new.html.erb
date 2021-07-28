@@ -1,8 +1,8 @@
 <div class="container mt-3">
-  <% if @brand.errors.any? %>
+  <% if @create_product.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <ul>
-        <% @brand.errors.full_messages.each do |message| %>
+        <% @create_product.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -12,25 +12,15 @@
 </div>
 
 
-<%= form_for :brand, url: { action: "create" } do |f| %>
+<%= form_for :product_form, url: products_path do |f| %>
   <div class="container mt-5 mb-5">
     <div class="d-flex flex-column justify-content-center">
-      <h4 class="mb-3">Add new shop</h4>
-      <form class="needs-validation" novalidate="">
+      <h4 class="mb-3">Add new product</h4>
+      <form class="needs-validation">
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="mb-3">
             <label for="firstName">Title</label>
             <%= f.text_field :title, class: 'form-control w-5' %>
-            <div class="invalid-feedback">
-              Valid title is required.
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Description</label>
-            <%= f.text_field :description, class: 'form-control w-5' %>
-            <div class="invalid-feedback">
-              Valid description is required.
-            </div>
           </div>
         </div>
 
@@ -38,18 +28,29 @@
         <div class="mb-3">
           <label for="email">Image url</label>
           <%= f.url_field :image_url, class: 'form-control w-5' %>
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Rating</label>
+            <label class="input-group-text" for="inputGroupSelect01">Price</label>
           </div>
-          <%= f.number_field :rating, in: 0..5, step: 1, class: "form-control w-5" %>
+          <%= f.number_field :price, in: 0..10000, value: 10, class: "form-control w-5" %>
         </div>
 
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Quantity</label>
+          </div>
+          <%= f.number_field :quantity, in: 0..10, value: 1, class: "form-control w-5" %>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Brand</label>
+          </div>
+          <%= f.select :brand_id, Brand.all.collect { |p| [p.title, p.id] }, class: "form-control w-5" %>
+        </div>
 
         <hr class="mb-4">
         <%= f.submit 'Create', class: 'btn btn-primary' %>

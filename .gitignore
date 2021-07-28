@@ -35,6 +35,4 @@
 yarn-debug.log*
 .yarn-integrity
 
-# env
-/config/config_env.rb
-
+.idea

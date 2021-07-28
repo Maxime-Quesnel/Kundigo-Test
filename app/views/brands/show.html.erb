@@ -1,2 +1,29 @@
-<h1>Brands#show</h1>
-<p>Find me in app/views/brands/show.html.erb</p>
+<div class="p-4 p-md-5 mb-4 text-white bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 fst-italic"><%= @brand.title %></h1>
+    <p class="lead my-3"><%= @brand.description %></p>
+    <a class="btn btn-primary btn-lg" href="
+      <%= root_path %>" role="button">Change shop</a>
+  </div>
+</div>
+
+<h1 class="text-center">Ours products</h1>
+<div class="container mt-3">
+  <% @product_brand_id.each do |item| %>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="<%= item.image_url %>" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %></h5>
+            <p class="card-text">15€</p>
+            <p class="card-text"><small class="text-muted">remaining stock: <%= item.quantity %></small></p>
+            <%= link_to "Add to cart", root_path, class: "btn btn-outline-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
