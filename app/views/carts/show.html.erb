@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-column align-items-center">
   <% @tab.each do |product| %>
-    <div class="card mb-3" style="max-width: 90%;">
+    <div class="card mb-3" style="width: 50%;">
       <div class="row g-0">
         <div class="col-md-4">
           <img style="height: 180px" src="<%= product[0].image_url %>" class="img-fluid rounded-start" alt="...">
@@ -10,8 +10,14 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"><%= product[0].title %></h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
+
+            <% if product[0].old_price == nil %>
+              <p class="card-text"><%= product[0].price %>€</p>
+            <% elsif product[0].price > product[0].old_price %>
+              <p class="card-text"><%= product[0].old_price %>€</p>
+            <% else %>
+              <p class="card-text"><%= product[0].price %>€</p>
+            <% end %>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             <button class="btn btn-danger">Delete</button>
           </div>
