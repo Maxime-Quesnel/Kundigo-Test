@@ -1,7 +1,12 @@
-<div class="container">
+<div class="d-flex justify-content-center mt-2">
+  <%= link_to "Add new shop", new_brand_path, class: "btn btn-outline-dark", style: "margin-right: 10px" %>
+  <%= link_to "Add new product", new_product_path, class: "btn btn-outline-dark" %>
+</div>
+
+<div class="container mt-5">
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @brands.each do |item| %>
-      <div class="col">
+      <div class="col d-flex justify-content-center">
         <div class="card" style="width: 24rem">
           <img style="height: 200px" src="<%= item.image_url %>" class="card-img-top" alt="<%= item.title %>">
           <div class="card-body">
@@ -9,7 +14,7 @@
             <p class="card-text"><%= item.description %></p>
             <div class="d-flex justify-content-between align-items-center">
               <p><%= item.rating %> / 5</p>
-              <button class="btn btn-primary">View</button>
+              <%= link_to "View", brand_path(id: item.id), class: "btn btn-outline-primary" %>
             </div>
           </div>
         </div>
