@@ -51,7 +51,6 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true,
     ssl: true
-
   }
 
   # Print deprecation notices to the Rails logger.
