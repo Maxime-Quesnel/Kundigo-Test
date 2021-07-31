@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  def edit
+  def create
     super
     @current_user = current_user.id
     Cart.create(confirm: nil, users_id: @current_user)

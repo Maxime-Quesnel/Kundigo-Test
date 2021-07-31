@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :buy
   devise_for :users, :controllers => { :registrations => "registrations" }
 
+  devise_scope :users do
+    get "edit", to: "users/registrations#edit"
+  end
+
   resources :confirmations do
     member do
       get 'cancel'
