@@ -1,0 +1,17 @@
+Hello,
+<br/>
+Thank you <%= @user_email %> for your order !
+<br/>
+
+<strong>In case of cancellation click on the link below (you have 3 hours to cancel before order confirmation)
+  Cancel the order</strong>
+<br/>
+
+<p><%= link_to 'Cancel the order', cancel_confirmation_url(id: @token_order) %></p>
+
+<br/>
+
+Thank you
+
+
+

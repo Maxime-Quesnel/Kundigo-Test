@@ -14,6 +14,7 @@ class CartProductsController < ApplicationController
       @get_cart_user_id = Cart.where(users_id: @current_user)
       CartProduct.create(product_id: params[:id_product], cart_id: @get_cart_user_id[0].id)
       redirect_to root_path
+      flash.notice = "Added to cart !"
     end
   end
 

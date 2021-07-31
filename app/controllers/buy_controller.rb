@@ -1,11 +1,16 @@
 class BuyController < ApplicationController
 
   def create
+    @current_user_id = current_user.id
     @current_user = current_user.email
 
-    @user_id = 1
+    @cart_id = Cart.where(users_id: @current_user_id)
 
-    UserMailer.confirm_achat(@current_user, @user_id).deliver_now
+    Order.create(confirm: true, cart_id: @cart_id[0].id)
+    @recent_order = Order.where("created_at < ? ", Time.now).where(cart_id: @cart_id[0].id).order('created_at DESC').first
+
+    UserMailer.cancel_command(@current_user, @current_user_id, @recent_order.token).deliver_now
+    flash.notice = "Your order has been confirmed"
     redirect_to root_path
   end
 

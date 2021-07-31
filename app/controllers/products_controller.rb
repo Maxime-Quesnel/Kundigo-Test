@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
     @product.update(old_price: @price_default)
     @product.update(post_params)
     redirect_to root_path
-
+    flash.notice = "The product has been successfully updated !"
   end
 
   private
