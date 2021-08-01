@@ -5,7 +5,7 @@ class ConfirmCommandJob < ApplicationJob
     @orders = Order.all
 
     @orders.each do |order|
-      unless order.created_at + 3.minutes < DateTime.now
+      if order.created_at + 5.minutes < DateTime.now
         @order_cancel = order
         @order_cancel.confirm = false
         @order_cancel.save

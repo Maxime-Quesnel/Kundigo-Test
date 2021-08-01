@@ -4,7 +4,7 @@ class CartsController < ApplicationController
     @current_user = current_user.id
     @get_cart_user_id = Cart.where(users_id: @current_user)
 
-    @products = CartProduct.where(cart_id: @get_cart_user_id[0].id)
+    @products = CartProduct.where(cart_id: @get_cart_user_id[0].id).where(visible: true)
 
     @tab = []
 

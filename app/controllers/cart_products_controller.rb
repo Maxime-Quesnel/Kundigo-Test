@@ -12,7 +12,7 @@ class CartProductsController < ApplicationController
 
       @current_user = current_user.id
       @get_cart_user_id = Cart.where(users_id: @current_user)
-      CartProduct.create(product_id: params[:id_product], cart_id: @get_cart_user_id[0].id)
+      CartProduct.create(product_id: params[:id_product], cart_id: @get_cart_user_id[0].id, visible: true)
       redirect_to root_path
       flash.notice = "Added to cart !"
     end
